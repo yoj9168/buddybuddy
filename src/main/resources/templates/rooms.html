@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CHATTING-INDEX</title>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="/img/buddybuddy_logo.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="/css/css_reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<!--버디버디 채팅방 목록-->
+<body>
+<section class="program">
+    <section class="header_main container">
+        <div class="row">
+            <div class="col-9 header_main_logo">
+                <img src="/img/버디버디_로고.png" alt="버디버디_로고">
+                <span class="header_main_title">BUDDYBUDDY</span>
+            </div>
+            <div class="col-3 header_main_control">
+                <img class="program_hiding" src="/img/minus-button.png" alt="창숨기기">
+                <img class="program_off" src="/img/failed.png" alt="창끄기">
+            </div>
+        </div>
+    </section>
+
+    <section class="content_chatting_room">
+        <div class="ui container">
+            <div class="row">
+                <div class="ui_profile col-3">
+                    <img src="/img/user.png" alt="유저 프로필">
+                </div>
+                <div class="ui_nickname col-9">
+                    <h3>Unknown</h3>
+                </div>
+            </div>
+        </div>
+        <div class="content_chatting_room_index">
+            <h6>😚 채팅방 목록</h6>
+            <ul>
+                {{#rooms}}
+                <li><a href="/chat/rooms/{{id}}">{{name}}</a></li>
+                {{/rooms}}
+            </ul>
+        </div>
+        <div class="content_chatting_room_create ">
+            <input name="message" placeholder="채팅방 이름">
+            <button class="create">만들기</button>
+
+        </div>
+    </section>
+
+    <footer class="footer_main container">
+        <div class="row">
+            <div class="col footer_main_searh">> 컴퓨터 네트워크</div>
+            <div class="col register">> 최차봉 교수님 짱</div>
+        </div>
+    </footer>
+</section>
+
+<script>
+        $(function () {
+            var messageInput = $('input[name="message"]');
+            var createBtn = $('.create');
+
+            createBtn.click(function () {
+                var roomId = messageInput.val();
+                var sendData = { "roomId": roomId };
+                $.ajax({
+                    url: 'rooms',
+                    method: 'POST',
+                    data: JSON.stringify(sendData),
+                    contentType: 'application/json; charset=UTF-8',
+                    dataType: 'json',
+                    success: function (resp) {
+                        console.log(resp);
+                    }
+                })
+            });
+        });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/3c68487302.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

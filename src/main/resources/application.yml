@@ -1,0 +1,8 @@
+spring:
+  mustache:
+    suffix: .html
+viewname:
+  chatroom:
+    list: /rooms
+    detail: /room-detail
+    start: /index

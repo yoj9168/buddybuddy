@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{room.name}}</title>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="/img/buddybuddy_logo.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="/css/css_reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+
+<!--버디버디 채팅방-->
+<body>
+<section class="program">
+    <section class="header_main container">
+        <div class="row">
+            <div class="col-9 header_main_logo">
+                <img src="/img/버디버디_로고.png" alt="버디버디_로고">
+                <span class="header_main_title">BUDDYBUDDY</span>
+            </div>
+            <div class="col-3 header_main_control">
+                <img class="program_hiding" src="/img/minus-button.png" alt="창숨기기">
+                <img class="program_off" src="/img/failed.png" alt="창끄기">
+            </div>
+        </div>
+    </section>
+
+    <section class="content2_chatting">
+        <div class="content" data-room-id="{{room.id}}" data-member="{{member}}">
+            <div class="chatting_space">
+                <center>
+                    <p style="font-style:bold">채팅방 이름 : {{room.name}}</p>
+                </center>
+                <ul class="chat_box">
+                </ul>
+            </div>
+            <div class="enter_space">
+                <input id="chat_input" name="message">
+                <button id="chat_btn" class="send">보내기</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer_main container">
+        <div class="row">
+            <div class="col footer_main_searh">> 컴퓨터 네트워크</div>
+            <div class="col register">> 최차봉 교수님 짱</div>
+        </div>
+    </footer>
+</section>
+
+<script>
+        $(function () {
+            var chatBox = $('.chat_box');
+            var messageInput = $('input[name="message"]');
+            var sendBtn = $('.send');
+            var roomId = $('.content').data('room-id');
+            var member = $('.content').data('member');
+
+            var sock = new SockJS("/ws/chat");
+
+            sock.onopen = function () {
+                sock.send(JSON.stringify({ chatRoomId: roomId, type: 'JOIN', writer: member }));
+                sock.onmessage = function (e) {
+                    var content = JSON.parse(e.data);
+                    chatBox.append('<li>' + content.writer + ' : ' + '<br>' + '<span class="tab">&#9;</span>' + content.message + '</li>')
+                }
+            }
+
+            sendBtn.click(function () {
+                var message = messageInput.val();
+                sock.send(JSON.stringify({ chatRoomId: roomId, type: 'CHAT', message: message, writer: member }));
+                messageInput.val('');
+            });
+        });
+
+        /*var chat_input = document.getElementById("chat_input");
+        input.addEventListner("keypress", function(event){
+            if(window.event.keyCode == 13) {
+                event.preventDefault();
+                document.getElementById("chat_btn").click();
+            }
+        });*/
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/3c68487302.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

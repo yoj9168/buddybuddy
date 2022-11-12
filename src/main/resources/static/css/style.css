@@ -1,0 +1,131 @@
+.program {
+    width: 400px;
+    height: 601px;
+    margin: 0 auto;
+    border: 1px solid;
+    background-color: #efefef;
+}
+
+/*header*/
+.header_main {
+    height:30px;
+    background-color:#efefef;
+    border-bottom: 1px solid;
+}
+.header_main .header_main_logo {
+    padding:0 8px;
+}
+.header_main .header_main_control {
+    padding:0 8px;
+}
+.header_main .header_main_logo > img {
+    width: 20px;
+    height: 20px;
+}
+.header_main .header_main_control {
+    text-align:right;
+}
+.header_main .header_main_control > img {
+    width: 20px;
+}
+
+/*content_main*/
+.content_main .content_main_cover {
+    height: 400px;
+    line-height: 400px;
+    text-align: center;
+    border-radius: 2%;
+    background-image: url("../img/main_background.jpg");
+    background-size: cover;
+}
+.content_main .content_main_cover img {
+    vertical-align: middle;
+    width: 300px;
+}
+.content_main .content_main_login {
+    display:table;
+    width:398px;
+    height: 141px;
+    border-radius: 2%;
+    background: linear-gradient( to top, white 5%, rgb(139, 254, 183) )
+}
+.content_main .content_main_login .user_login {
+    display:table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.content_main .content_main_login .user_login .nickname,.start {
+    border-radius: 5px;
+}
+.content_main .content_main_login .user_login .start:hover {
+    background: #d1d1d1;
+}
+
+/*content_chatting_room*/
+.content_chatting_room {
+    height: 541px;
+}
+.content_chatting_room .ui {
+    border-bottom: 1px solid;
+}
+.content_chatting_room .ui {
+    padding: 20px;
+}
+.content_chatting_room .ui .ui_profile {
+    text-align: center;
+}
+.content_chatting_room .ui .ui_profile > img {
+    width: 50px;
+}
+.content_chatting_room .ui .ui_nickname > h3 {
+    margin: 8px 0;
+}
+.content_chatting_room .content_chatting_room_index {
+    height:410px;
+    padding: 10px;
+    overflow: auto;
+}
+.content_chatting_room .content_chatting_room_create {
+    text-align: center;
+    width: 380px;
+    margin:0 auto;
+    padding-bottom: 10px;
+}
+.content_chatting_room .content_chatting_room_create > input {
+    width: 80%;
+}
+
+/*content2_chatting*/
+.content2_chatting .content {
+    height: 531px;
+}
+.content2_chatting .content .chatting_space {
+    height: 481px;
+    margin: 10px;
+    border-radius: 2%;
+    background-color: white;
+    overflow: auto;
+}
+.content2_chatting .content .chatting_space .chat_box {
+    padding: 10px;
+}
+.content2_chatting .content .enter_space {
+    text-align: center;
+    width: 380px;
+    padding-bottom: 10px;
+    margin:0 auto;
+}
+.content2_chatting .content .enter_space > input {
+    width: 80%;
+}
+.tab { white-space: pre; }
+
+/*footer*/
+.footer_main {
+    background-color: #efefef;
+    height:30px;
+    border-top:1px solid;
+}
+.footer_main .register {
+    text-align: right;
+}

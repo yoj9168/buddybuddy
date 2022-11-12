@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BUDDYBUDDY</title>
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="/img/buddybuddy_logo.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="/css/css_reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+<section class="program">
+    <section class="header_main container">
+        <div class="row">
+            <div class="col header_main_logo">
+                <img src="/img/버디버디_로고.png" alt="버디버디_로고">
+                <span class="header_main_title">BUDDYBUDDY</span>
+            </div>
+            <div class="col header_main_control">
+                <img class="program_hiding" src="/img/minus-button.png" alt="창숨기기">
+                <img class="program_off" src="/img/failed.png" alt="창끄기">
+            </div>
+        </div>
+    </section>
+
+    <section class="content_main">
+        <div class="content_main_cover">
+            <img src="/img/버디버디_로고2-cutout.png" alt="버디버디_글자">
+        </div>
+        <div class="content_main_login">
+            <div class="user_login">
+                <input type="text" name="nickname" id="nickname" placeholder="닉네임을 입력하세요">
+                <button class="start">시작하기</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer_main container">
+        <div class="row">
+            <div class="col footer_main_searh">> 컴퓨터 네트워크</div>
+            <div class="col register">> 최차봉 교수님 짱</div>
+        </div>
+    </footer>
+</section>
+
+<script>
+$(function(){
+    var startBtn = $('.start');
+    startBtn.click(function(){
+        window.location.href = '/chat/rooms';
+    });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
